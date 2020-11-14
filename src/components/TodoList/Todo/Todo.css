@@ -1,0 +1,16 @@
+.todoItem-deleteButton button{
+  cursor: pointer;
+  border-radius: 15%;
+  -webkit-border-radius: 15%;
+  -moz-border-radius: 15%;
+  -ms-border-radius: 15%;
+  -o-border-radius: 15%;
+}
+
+.todoItem-deleteButton button::after{
+  content: '\274C'; /** icon cross in delete todo button */
+}
+
+.todoItem-deleteButton button:hover{
+  background-color: #EEE;
+}

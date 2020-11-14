@@ -1,0 +1,31 @@
+.actionBar {
+  min-height: 42px;
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  /* border: 1px solid black; */
+
+}
+
+.plus-button {
+  content: "\002B";
+  padding: 2px;
+  font-size: x-large;
+  color: darkred;
+  border-radius: 50%;
+}
+
+.plus-button:hover {
+  cursor: pointer;
+  color: red;
+  font-size: xx-large;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}

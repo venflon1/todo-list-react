@@ -1,0 +1,40 @@
+.data {
+  min-height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.action-col .action-col-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.action-col .action-col-wrap .bin-button {
+  font-size: x-large;
+}
+
+.action-col .action-col-wrap .bin-button:hover {
+  cursor: pointer;
+  color: red;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.action-col .action-col-wrap .bin-button {
+  font-size: x-large;
+}
+
+.action-col .action-col-wrap .edit-button:hover {
+  cursor: pointer;
+  color: red;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}

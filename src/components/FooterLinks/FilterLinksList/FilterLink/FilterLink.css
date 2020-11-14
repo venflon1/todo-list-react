@@ -1,0 +1,12 @@
+.filter-link {
+  padding: 15px;
+}
+
+.filter-link span:hover {
+  cursor: pointer;
+}
+
+.active {
+  background-color: #333;
+  color: #FFF;
+}

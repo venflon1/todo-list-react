@@ -1,0 +1,35 @@
+nav {
+  min-width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+nav .menu {
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+nav .menu li {
+
+  list-style: none;
+  text-transform: capitalize;
+}
+
+nav .menu li a {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-decoration: none;
+  color: white;
+
+}
+
+.activeLink {
+  background-color: #3B80d1;
+  text-decoration: none;
+  color: red;
+}

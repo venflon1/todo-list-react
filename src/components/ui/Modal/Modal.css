@@ -1,0 +1,46 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  min-width: 700px;
+  min-height: 200px;
+  background-color: #EEE;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 5px;
+  text-align: center;
+  box-shadow: 3px 3px 5px 6px #BBB;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.modal .close-bar {
+  min-height: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.modal .close-bar .close-button {
+  font-size: large;
+  color: black;
+}
+
+
+.modal .close-bar .close-button:hover {
+  cursor: pointer;
+  font-size: x-large;
+  color: red;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.modal .content-modal {
+  min-height: 320px;
+}

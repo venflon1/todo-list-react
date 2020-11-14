@@ -1,0 +1,23 @@
+.addTodo {
+  margin-bottom: 15px;
+}
+
+.addTodo input {
+  width: 400px;
+  height: 30px;
+  margin-right: 2px;
+  font-size: large;
+}
+
+.addTodo button {
+  height: 35px;
+  width: 80px;
+  border-radius: 0 12px 12px 0;
+  -webkit-border-radius: 0 12px 12px 0;
+  -moz-border-radius: 0 12px 12px 0;
+  -ms-border-radius: 0 12px 12px 0;
+  -o-border-radius: 0 12px 12px 0;
+  background-color: #EEE;
+  cursor: pointer;
+}
+

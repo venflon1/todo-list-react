@@ -1,0 +1,9 @@
+.footer-links {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* background-color: #EEE; */
+  margin: 2px;
+  padding: 2px;
+  /* border: 0.5px solid #777; */
+}

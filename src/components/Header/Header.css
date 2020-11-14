@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.header-logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px;
+  margin: 0px;
+}
+
+
+.header-logo h2 {
+  margin: 0px;
+}

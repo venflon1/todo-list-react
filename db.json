@@ -1,0 +1,58 @@
+{
+  "todos": [
+    {
+      "id": 387310,
+      "title": "sa",
+      "completed": true
+    },
+    {
+      "id": 362341,
+      "title": "sa",
+      "completed": false
+    },
+    {
+      "id": 82129,
+      "title": "asaa",
+      "completed": true
+    },
+    {
+      "id": 285786,
+      "title": "asaasa",
+      "completed": false
+    },
+    {
+      "id": 637314,
+      "title": "sasa",
+      "completed": false
+    },
+    {
+      "id": 972249,
+      "title": "pp",
+      "completed": false
+    },
+    {
+      "id": 2547276,
+      "title": "akn",
+      "completed": false
+    },
+    {
+      "id": 1308066,
+      "title": "ciao",
+      "completed": false
+    }
+  ],
+  "listsOfTodos": [
+    {
+      "id": 0,
+      "username": "plutone",
+      "dateIns": "10/10/2019",
+      "title": "lista della spesa"
+    },
+    {
+      "id": 1,
+      "username": "Saturno",
+      "dateIns": "1/11/2019",
+      "title": "lista hobby"
+    }
+  ]
+}

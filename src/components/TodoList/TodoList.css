@@ -1,0 +1,37 @@
+.list-todo{
+  display: flex;
+  flex-direction: column;
+}
+
+.list-todo ul{
+  min-height: 350px;
+}
+
+.list-todo ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 2px solid #BBB;
+}
+
+.list-todo ul li:hover{
+  background-color: #AAA;
+  transition: 0.7s;
+  -webkit-transition: 0.7s;
+  -moz-transition: 0.7s;
+  -ms-transition: 0.7s;
+  -o-transition: 0.7s;
+  font-size: large;
+}
+
+
+.list-todo ul li.completed{
+  text-decoration: line-through;
+  color: red;
+}
+
+
+.list-todo ul li:last-child {
+  border: 0px;
+}

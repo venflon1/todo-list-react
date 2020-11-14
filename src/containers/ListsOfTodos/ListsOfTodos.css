@@ -1,0 +1,82 @@
+.lists-of-todos {
+  display: flex;
+  flex-direction: column;
+}
+
+.lists-of-todos .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.lists-of-todos .content-page {
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lists-of-todos .content-page table {
+  width: 90%;
+  padding: 5px;
+  /* border: 1px solid #222; */
+}
+
+.lists-of-todos .content-page table thead td {
+  border: 1px solid #222;
+  text-align: center;
+}
+
+.lists-of-todos .content-page table tbody tr td {
+  text-align: center;
+}
+
+.lists-of-todos .content-page table tbody tr:nth-child(even) {
+  background-color: #98CCFE;
+}
+
+.lists-of-todos .content-page table tbody tr:nth-child(odd) {
+  background-color: #FFF;
+}
+
+.lists-of-todos .content-page table tbody tr:hover {
+  background-color: #E1E1E1;
+  /* font-size: large; */
+  transition: 1;
+  -webkit-transition: 1;
+  -moz-transition: 1;
+  -ms-transition: 1;
+  -o-transition: 1;
+}
+
+.lists-of-todos .content-page table thead {
+  background-color: #F0DC82;
+}
+
+.lists-of-todos .content-page table thead td {
+  padding: 10px;
+  border: 1px solid #222;
+}
+
+.alert-message {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
+}
+
+.alert-message span {
+  font-size: xx-large;
+  color: darkred;
+}
+
+.add-todoList form{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.add-todoList form textarea {
+  margin-top: 25px;
+}
