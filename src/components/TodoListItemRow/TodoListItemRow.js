@@ -1,7 +1,9 @@
 import React from 'react'
+import { withRouter } from 'react-router';
 import './TodoListItemRow.css';
 
 const TodoListItemRow = (props) => {
+  console.log('TodoListItemRow - props=',props);
   const dataRow = props.dataRow;
 
   return (
@@ -25,7 +27,7 @@ const TodoListItemRow = (props) => {
           <div className="action-col-wrap">
             <span
               className="edit-button"
-              onClick={() => { props.onEditItemRow() }}
+              onClick={() => { props.onEditItemRow(dataRow.id) }}
             >
               &#9998;
             </span>
@@ -41,4 +43,4 @@ const TodoListItemRow = (props) => {
     );
 }
 
-export default TodoListItemRow
+export default withRouter(TodoListItemRow)

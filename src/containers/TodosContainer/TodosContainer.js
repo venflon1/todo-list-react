@@ -5,8 +5,9 @@ import TodoList from '../../components/TodoList/TodoList';
 import FooterLinks from '../../components/FooterLinks/FooterLinks';
 import { addTodoAction, deleteTodoAction, handleClickFilterAction, handleTodoCompleted, loadDataFromServerAction } from '../../actionCreators/todosActionCreators';
 import { TODOS_API_URL } from '../../config/API';
-import { isArrayNotEmpty, isNullOrUndef } from '../../utils/functionUtils';
+import { isArrayNotEmpty, isNullOrUndef, iSNullOrUndefOrVoidStr } from '../../utils/functionUtils';
 import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
+import { withRouter } from 'react-router';
 
 class TodosContent extends Component {
 
@@ -16,18 +17,20 @@ class TodosContent extends Component {
   }
 
  componentDidMount = () => {
-    console.log("MainContent.js - componentDidMount - START props=", this.props);
+    console.log("TodosContent.js - componentDidMount - START props=", this.props);
 
-    this.props.loadData(TODOS_API_URL).then( (response) =>{
-      console.log("response", response);
-    }).catch( (exception) => {
-      console.error("loadData From server was an error!");
-    });
-
+    // this.props.loadData(TODOS_API_URL).then( (response) =>{
+    //   console.log("response", response);
+    // }).catch( (exception) => {
+    //   console.error("loadData From server was an error!");
+    // });
+    this.props.loadData(TODOS_API_URL);
   }
 
   render(){
-    console.log('MainContent - render START');
+    console.log('TodosContent - render START - props=', this.props);
+    console.log('url params matched =', this.props.match.params);
+    const idListOfTodos = this.props.match.params.idListOfTodo;
 
     return (
       <ErrorBoundary>
@@ -37,7 +40,7 @@ class TodosContent extends Component {
               addTodoHandler={this.props.addTodo}
               onFilterClickHandler={this.props.onFilterClickHandler}/>
             <TodoList
-              todos={this.props.store.todos}
+              todos={ this.todosToRenderByIdListOfTodo(this.props.store.todos, idListOfTodos) }
               deleteTodo={this.props.deleteTodo}
               handleTodoCompleted={this.props.handleTodoCompleted}
               error={this.props.store.error} />
@@ -47,10 +50,37 @@ class TodosContent extends Component {
       </ErrorBoundary>
     );
   }
+
+  todosToRenderByIdListOfTodo = (todos, idListOfTodo) => {
+    console.log("TodosContent - todosToRenderByIdListOfTodo START - todos=", todos, ", idListOfTodo=", idListOfTodo);
+    let todosByIdListOfTodo = null;
+    if( !iSNullOrUndefOrVoidStr(idListOfTodo)) {
+      todosByIdListOfTodo = todos.filter( todo => todo.idList === Number(idListOfTodo) );
+    } else{
+      todosByIdListOfTodo = todos;
+    }
+    console.log("TodosContent - todosToRenderByIdListOfTodo END");
+    return todosByIdListOfTodo;
+  }
+
 }
 
-const todosToRender = (state) => {
-  console.log("MainContent - todosToRender START - state=", state);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const todosToRenderByFilter = (state) => {
+  console.log("TodosContent - todosToRenderByFilter START - state=", state);
   const filterLinks = state.filterLinksTodo? state.filterLinksTodo: null;
   let todos = [];
   if( !isNullOrUndef(filterLinks) && isArrayNotEmpty(filterLinks) ){
@@ -76,7 +106,7 @@ const todosToRender = (state) => {
       }
     }
   }
-  console.log("todosToRender - END");
+  console.log("TodosContent - todosToRenderByFilter END");
   return todos;
 }
 
@@ -88,8 +118,8 @@ const todosToRender = (state) => {
  *
  * @return object -
  */
-const mapStateToProps = (currentState, ownProps) =>{
-  const todos = todosToRender(currentState);
+const mapStateToProps = (currentState, ownProps) => {
+  const todos = todosToRenderByFilter(currentState);
   // ritorna un oggetto ...
   const objMapStateToProps = {
       store: {...currentState, todos},
@@ -128,5 +158,4 @@ const mapStateToProps = (currentState, ownProps) =>{
  * @return una funzione - connect restituisce una funzione che poi invochiamo passandogli
  *                        il componente a cui vogliamo collegarlo con lo store
  */
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodosContent);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TodosContent));

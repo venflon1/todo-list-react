@@ -4,16 +4,8 @@ const linksValue = [
     path: '/listsoftodos'
   },
   {
-    title: 'todos',
+    title: 'All Todos',
     path: '/todos'
-  },
-  {
-    title: 'signup',
-    path: '/signup'
-  },
-  {
-    title: 'login',
-    path: '/login'
   }
 ];
 

@@ -1,0 +1,71 @@
+.login-form {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login-form .from-group {
+  min-width: 400px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  background-color: gainsboro;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.login-form .from-group input {
+  width: 320px;
+  height: 28px;
+  margin: 10px;
+  border-radius: 5px;
+  -webkit-border-radius:;
+  -moz-border-radius:;
+  -ms-border-radius:;
+  -o-border-radius:;
+}
+
+.login-form .login-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form .login-buttons input[type="submit"],
+.login-form .login-buttons button {
+  width: 120px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.login-form .login-buttons input[type="submit"]{
+  background-color: #3B80d1;
+  color: white;
+}
+
+.goto-register {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.goto-register a {
+  text-decoration: none;
+  color: black;
+}
+
+.goto-register a:hover {
+  cursor: pointer;
+  color: #3B80d1;
+  text-decoration: underline;
+}

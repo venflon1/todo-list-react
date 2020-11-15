@@ -8,7 +8,7 @@ import { LIST_OF_TODOS_API_URL } from '../../config/API';
 import { loadListsTodosFromServerAction, addListTodoAction, deleteListTodoAction, editListTodoAction } from '../../actionCreators/listsTodosActionCreators';
 import './ListsOfTodos.css';
 
-export class ListsOfTodos extends Component {
+class ListsOfTodosContainer extends Component {
 
   constructor(props){
     super(props);
@@ -20,14 +20,62 @@ export class ListsOfTodos extends Component {
 
   componentDidMount(){
     console.log("ListsOfTodos.js - componentDidMount - START props=", this.props);
-    this.props.loadData(LIST_OF_TODOS_API_URL).then( (response) =>{
-      console.log("response", response);
-    }).catch( (exception) => {
-      console.error("loadData From server was an error!");
-    });
+    // this.props.loadData(LIST_OF_TODOS_API_URL).then( (response) =>{
+    //   console.log("response", response);
+    // }).catch( (exception) => {
+    //   console.error("loadData From server was an error!");
+    // });
+    this.props.loadData(LIST_OF_TODOS_API_URL);
   }
 
-  /**
+  onModalFormHandler = (event) => {
+    const data = {
+      titleListToAdd: event.target.value
+    };
+    const isFormValid = this.validateForm(data);
+    if(isFormValid){
+      this.setState({
+        titleTodoListToAdd: data.titleListToAdd,
+        isModalFormValid: true
+      });
+    } else {
+        this.setState({
+        isModalFormValid: false
+      });
+    }
+  }
+
+  validateForm = (formData) => {
+    if(isNullOrUndef(formData)){
+      return false;
+    } else if(iSNullOrUndefOrVoidStr(formData.titleListToAdd)){
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  onSaveFormModalHandler = (event) => {
+    console.log('i click on save');
+    const listOfTodoToSave = {
+      username: 'aaa',
+      title: this.state.titleTodoListToAdd
+    };
+    this.props.addTodoList(listOfTodoToSave)
+  }
+
+  onEditItemHandler = (id) => {
+    console.log("i click on edit");
+    const currentLocation = window.location.href;
+    window.location.href = currentLocation + "/" + id + "/todos";
+  }
+
+  onDeleteItemHandler = (idListOfTodoToDelete) => {
+    console.log("i click on delete");
+    this.props.deleteTodoList(idListOfTodoToDelete);
+  }
+
+    /**
    * Questo metodo si occupa di costruire le righe della tabella a partire dai dati che gli passano
    * Si aspetta gli venga passato un array di oggetti.
    * Ogni oggetto contiene i dati di una riga - quindi un oggetto del vettore mappa una riga della tabella
@@ -38,18 +86,19 @@ export class ListsOfTodos extends Component {
     if( isNullOrUndef(todoListItemsRows) || !isArrayNotEmpty(todoListItemsRows) ){
       return null;
     } else {
-      const rowsContentJsxElement = todoListItemsRows.map( (todoListItemRow) => {
+      const rowsContentJsxElement = todoListItemsRows.map( (todoListItemData) => {
         return ( <TodoListItemRow
-                                  key={todoListItemRow}
-                                  dataRow={todoListItemRow}
-                                  onEditItemRow={this.onEditItemHandler(this.props.match)}
-                                  onDeleteItemRow={this.onDeleteItemHandler} /> );
+                                  key={todoListItemData.id}
+                                  dataRow={todoListItemData}
+                                  onEditItemRow={this.onEditItemHandler}
+                                  onDeleteItemRow={this.onDeleteItemHandler}/> );
       });
       return rowsContentJsxElement;
     }
   }
 
   render() {
+    console.log('ListOfTodosContainer - render - START - props=', this.props);
     const rowsJsxElement = this.getbodyTableRow(this.props.store.listsOfTodos);
     const noContenData = rowsJsxElement === null? <span>No Content</span>: null;
     let modal = null;
@@ -100,51 +149,20 @@ export class ListsOfTodos extends Component {
     )
   }
 
-  onModalFormHandler = (event) => {
-    const data = {
-      titleListToAdd: event.target.value
-    };
-    const isFormValid = this.validateForm(data);
-    if(isFormValid){
-      this.setState({
-        titleTodoListToAdd: data.titleListToAdd,
-        isModalFormValid: true
-      });
-    }else{
-        this.setState({
-        isModalFormValid: false
-      });
-    }
-  }
-
-  validateForm = (formData) => {
-    if(isNullOrUndef(formData)){
-      return false;
-    } else if(iSNullOrUndefOrVoidStr(formData.titleListToAdd)){
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  onSaveFormModalHandler = (event) => {
-    console.log('i click on save');
-    const listOfTodoToSave = {
-      username: 'aaa',
-      title: this.state.titleTodoListToAdd
-    };
-    this.props.addTodoList(listOfTodoToSave)
-  }
-
-  onEditItemHandler = (event) => {
-    console.log("i click on edit");
-  }
-
-  onDeleteItemHandler = (idListOfTodoToDelete) => {
-    console.log("i click on delete");
-    this.props.deleteTodoList(idListOfTodoToDelete);
-  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /**
@@ -182,4 +200,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListsOfTodos);
+export default connect(mapStateToProps, mapDispatchToProps)(ListsOfTodosContainer);
